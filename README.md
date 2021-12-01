@@ -1,2 +1,4 @@
 # ESP32-NeoWeb
-ESP32 Neopixels Driver for RGBW leds with builtin Web Server
+Micropython ESP32 Neopixels Driver for RGBW leds with builtin Web Server
+
+The webserver comes from the Microdot project
