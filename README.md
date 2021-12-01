@@ -5,6 +5,8 @@ The webserver comes from the Microdot project
 
 Tested with MicroPython 1.17
 
+You'll need to add a boot.py to connect to WLAN/LAN
+
 Connections:
 
 	IO14 - Data to NeoPixels
