@@ -2,3 +2,11 @@
 Micropython ESP32 Neopixels Driver for RGBW leds with builtin Web Server
 
 The webserver comes from the Microdot project
+
+Tested with MicroPython 1.17
+
+Connections:
+
+	IO14 - Data to NeoPixels
+	IO16 - Push Button 0
+	IO17 - Push Button 1
