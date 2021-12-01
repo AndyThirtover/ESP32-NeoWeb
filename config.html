@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>NeoPixel Driver</title>
+  <meta name="description" content="Neo Pixel Scene Driver" />
+  <meta name="keywords" content="Neopixels" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="/style.css" title="style" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">ESP32 NeoPixel<span class="logo_colour">Driver</span></a></h1>
+          <h2>Simple Web Driven NeoPixel Driver</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="/">Home</a></li>
+          <li><a href="/config.html">Configuration</a></li>
+          <li><a href="/command">Command Interface</a></li>
+          <li><a href="/docs">Documentation</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>Information</h3>
+        <h4>Version 1.0 Released</h4>
+        <h5>November 2021</h5>
+        <p>Version 1.0 adds JSON configuration storage, URL commands and a Web configurator.</a></p>
+        <p></p>
+    
+        <h3>Source Code</h3>
+        <ul>
+          <li><a href="https://github.com/AndyThirtover/Neopixel-Dynamic-Scenes">GitHub Project</a></li>
+        </ul>
+      </div>
+
+      <div id="content">
+<script>
+$.getJSON("/json_config", function(result){
+        $.each(result, function(key, field){
+            $('#'+key).val(field) ;
+        });
+    });
+</script>
+
+
+<h1>CONFIGURATION</h1>
+
+<form action="/config_send" method='get'>
+    <table>
+        <tr>
+            <th>Value</th>
+            <th>Setting [Restart Needed]</th>
+        </tr>
+        <tr>
+            <td id='iname'>LED COUNT</td>
+            <td><input id='LED_COUNT' type='number' name='LED_COUNT' /></td>
+        </tr>
+        <tr>
+            <td id='iname'>Max Brightness</td>
+            <td><input id='MAX' type='number' name='MAX' /></td>
+        </tr>
+        <tr>
+            <th>Wash 1 </th>
+            <th>Settings</th>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash Red</td>
+            <td><input id='CWRED' type='number' name='CWRED' /></td>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash Green</td>
+            <td><input id='CWGREEN' type='number' name='CWGREEN' /></td>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash Blue</td>
+            <td><input id='CWBLUE' type='number' name='CWBLUE' /></td>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash White</td>
+            <td><input id='CWWHITE' type='number' name='CWWHITE' /></td>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash Ratio</td>
+            <td><input id='CWRATIO' type='number' name='CWRATIO' /></td>
+        </tr>
+        <tr>
+            <th>Wash 2 </th>
+            <th>Settings</th>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash Red</td>
+            <td><input id='CWRED2' type='number' name='CWRED2' /></td>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash Green</td>
+            <td><input id='CWGREEN2' type='number' name='CWGREEN2' /></td>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash Blue</td>
+            <td><input id='CWBLUE2' type='number' name='CWBLUE2' /></td>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash White</td>
+            <td><input id='CWWHITE2' type='number' name='CWWHITE2' /></td>
+        </tr>
+        <tr>
+            <td id='iname'>Colour Wash Ratio</td>
+            <td><input id='CWRATIO2' type='number' name='CWRATIO2' /></td>
+        </tr>
+
+        <tr>
+            <td id='iname'>COMPLETE</td>
+            <td><input type='submit' name='submit' value='SYSTEM' /></td>
+        </tr>
+    </table>
+</form>
+
+    <p>Any change of <em>LED Parameters</em> will require a program restart</p>
+
+<script>
+$.getJSON( "/button_config", function( data ) {
+  var items = [];
+  items.push("<tr><th>Pin</th><th>URL Called</th></tr>");
+  $.each( data, function( key, val ) {
+    items.push( "<tr>");
+    items.push( "<td id='" + key + "'>" + key + "</td>" );
+    items.push( "<td><input type='text' name='" + key + "' value='" + val.url + "'</input></td>" );
+    items.push( "</tr>");
+  });
+  items.push("<tr><td>COMPLETE</td><td><input type='submit' name='submit' value='BUTTONS'/></td></tr>");
+ 
+  $( "<table/>", {
+    "class": "bdefinitions",
+    html: items.join( "" )
+  }).appendTo( "#bconfig" );
+});
+</script>
+
+<h1>BUTTON CONFIGURATION</h1>
+<form id='bconfig'>
+</form>
+
+
+      </div>
+
+    </div>
+    <div id="footer">
+      Copyright &copy; WbAV Productions | <a href="http://wbavproductions.co.uk">WbAV Productions</a> 
+    </div>
+  </div>
+</body>
+</html>

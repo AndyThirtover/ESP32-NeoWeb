@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>NeoPixel Driver</title>
+  <meta name="description" content="Neo Pixel Scene Driver" />
+  <meta name="keywords" content="Neopixels" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style.css" title="style" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">ESP32 NeoPixel<span class="logo_colour">Driver</span></a></h1>
+          <h2>ESP32 NeoPixel Driver</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="/">Home</a></li>
+          <li><a href="/config.html">Configuration</a></li>
+          <li><a href="/command">Command Interface</a></li>
+          <li><a href="/docs">Documentation</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>Information</h3>
+        <h4>Version 1.2 Released</h4>
+        <h5>2nd November, 2021</h5>
+        <p>Version 1.2 Changed to 4 colour mode</a></p>
+        <p></p>
+    
+        <h3>Source Code</h3>
+        <ul>
+          <li><a href="https://github.com/AndyThirtover/ESP32 Neopixels">GitHub Project</a></li>
+        </ul>
+      </div>
+      <div id="content">
+        <table>
+  <tr>
+    <th colspan='4'> SCENE FUNCTIONS</th>
+  </tr>
+  <tr>
+    <td class='button' onclick="window.location.href='/queue/neo_off'"> OFF RGBW </td>
+    <td class='button' onclick="window.location.href='/queue/centre'"> CENTRE BLEND </td>
+    <td class='button' onclick="window.location.href='/queue/blend'"> BLEND W1 to W2 </td>
+    <td class='button' onclick="window.location.href='/queue/random_pastel'"> Random PASTEL </td>
+  </tr>
+  <tr>
+    <td class='button' onclick="window.location.href='/queue/dim'"> DIM 50% </td>
+    <td class='button' onclick="window.location.href='/queue/quarter/2'"> QUARTER2 </td>
+    <td class='button' onclick="window.location.href='/queue/quarter/3'"> QUARTER3 </td>
+    <td class='button' onclick="window.location.href='/queue/quarter/4'"> QUARTER4 </td>
+  </tr>
+  <tr>
+    <td class='button' onclick="window.location.href='/scene/static?r=64&g=64&b=4&w=0'"> STATIC Colour 1</td>
+    <td class='button' onclick="window.location.href='/scene/static?r=64&g=4&b=64&w=0'"> STATIC Colour 2</td>
+    <td class='button' onclick="window.location.href='/scene/static?r=4&g=64&b=44&w=0'"> STATIC Colour 3</td>
+    <td class='button' onclick="window.location.href='/scene/static?r=254&g=0&b=0&w=0'"> STATIC Colour RED</td>
+  </tr>
+  <tr>
+    <td class='button' onclick="window.location.href='/queue/random_change/wash'"> RANDOM Wash </td>
+    <td class='button' onclick="window.location.href='/queue/random_change/red'"> RANDOM Red </td>
+    <td class='button' onclick="window.location.href='/queue/random_change/amber'"> RANDOM Amber </td>
+    <td class='button' onclick="window.location.href='/queue/random_change/green'"> RANDOM Green </td>
+  </tr>
+  <tr>
+    <td class='button' onclick="window.location.href='/queue/twinkle'"> TWINKLE </td>
+    <td class='button' onclick="window.location.href='/queue/twinkle/20'"> TWINKLE 20</td>
+    <td class='button' onclick="window.location.href='/queue/twinkle_fade'"> TWINK FADE </td>
+    <td class='button' onclick="window.location.href='/queue/twinkle_fade/20'"> TWINK FADE 20</td>
+  </tr>
+  <tr>
+    <td class='button' onclick="window.location.href='/queue/alarm'"> ALARM </td>
+    <td class='button' onclick="window.location.href='/queue/alarm/20'"> ALARM 20</td>
+    <td class='button' onclick="window.location.href='/queue/alarm/colour=green'"> ALARM GREEN </td>
+    <td class='button' onclick="window.location.href='/queue/alarm/colour=green?speed=20'"> ALARM GREEN 20</td>
+  </tr>
+</table>
+
+      </div>
+    </div>
+    <div id="footer">
+      Copyright &copy; WbAV Productions | <a href="http://wbavproductions.co.uk">WbAV Productions</a> 
+    </div>
+  </div>
+</body>
+</html>
