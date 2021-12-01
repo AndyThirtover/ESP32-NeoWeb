@@ -8,6 +8,9 @@ from web_gen import *
 from neo_patterns import *
 from watchd import *
 
+# We need to know what address we are on.
+wifi = network.WLAN(network.STA_IF)
+print ("Status: {}".format(wifi.ifconfig()))
 
 async def main():
     await app.start_server(host='0.0.0.0', port=80, debug=True)
