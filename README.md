@@ -16,3 +16,5 @@ Connections:
 Known Issues
 
 Web page is slow to serve on poor Wifi connections.
+
+Calling the web page during a long NeoPixel operation will time out.

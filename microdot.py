@@ -205,7 +205,7 @@ class Request():
     #: Example::
     #:
     #:    Request.max_readline = 16 * 1024  # 16KB lines allowed
-    max_readline = 2 * 1024
+    max_readline = 8 * 1024
 
     class G:
         pass

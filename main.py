@@ -10,7 +10,7 @@ from watchd import *
 
 # We need to know what address we are on.
 wifi = network.WLAN(network.STA_IF)
-print ("Status: {}".format(wifi.ifconfig()))
+print ("IP ADDRESS: {}".format(wifi.ifconfig()[0]))
 
 async def main():
     await app.start_server(host='0.0.0.0', port=80, debug=True)
@@ -20,12 +20,12 @@ async def main():
 event_loop = asyncio.get_event_loop()
 
 asyncio.create_task(main())
-print ("This is after the asyncio create_task of main")
+print ("CREATE TASK main - this starts the WebServer")
 
 asyncio.create_task(monitor())
-print ("This is after the asyncio create_task of monitor - the watchdog thread")
+print ("CREATE TASK monitor - this is the watchdog")
 
 asyncio.create_task(roll(np))
-print ("This is after the asyncio create_task of roll")
+print ("CREATE TASK roll - this drives the NeoPixels")
 
 event_loop.run_forever()

@@ -88,7 +88,7 @@ def single_random(np):
 async def random_pastel(np):
 	for i in range(LED_COUNT):
 		np[i] = (randint(0,255),randint(0,255),randint(0,255),randint(0,255))
-		print ("Values {}".format(np[i]))
+		#print ("Values {}".format(np[i]))
 		np.write()
 
 async def do_blend(np):
