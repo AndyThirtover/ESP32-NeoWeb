@@ -12,3 +12,7 @@ Connections:
 	IO14 - Data to NeoPixels
 	IO16 - Push Button 0
 	IO17 - Push Button 1
+
+Known Issues
+
+Web page is slow to serve on poor Wifi connections.
