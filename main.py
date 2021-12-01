@@ -6,6 +6,7 @@ import network
 from microdot_asyncio import Microdot, Response
 from web_gen import *
 from neo_patterns import *
+from buttons import *
 from watchd import *
 
 # We need to know what address we are on.
@@ -27,5 +28,9 @@ print ("CREATE TASK monitor - this is the watchdog")
 
 asyncio.create_task(roll(np))
 print ("CREATE TASK roll - this drives the NeoPixels")
+
+asyncio.create_task(buttons())
+print ("CREATE TASK buttons - this listens to the Buttons")
+
 
 event_loop.run_forever()
