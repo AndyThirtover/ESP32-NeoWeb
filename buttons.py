@@ -5,7 +5,7 @@ from neo_patterns import *
 import uasyncio as asyncio
 import json
 
-debounce = const(10)
+debounce = const(6)
 
 async def buttons():
 	off_pin = Pin(16, Pin.IN, Pin.PULL_UP)
@@ -25,7 +25,7 @@ async def buttons():
 			off_count = 0
 			#print("neo_off from button")
 		if scene_count > debounce:
-			messages.append("blend")
+			messages.append("scene:static?r=4&g=4&b=64&w=0")
 			scene_count = 0
 			#print("blend from button")
 
