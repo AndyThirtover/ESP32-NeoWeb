@@ -65,6 +65,14 @@ $.getJSON("/json_config", function(result){
             <th>Setting [Restart Needed]</th>
         </tr>
         <tr>
+            <td id='iname'>Pixel ORDER</td>
+            <td><select id='ORDER' name='ORDER'>
+                    <option value='RGBW'>RGBW</option>
+                    <option value='GRBW'>GRBW</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td id='iname'>LED COUNT</td>
             <td><input id='LED_COUNT' type='number' name='LED_COUNT' /></td>
         </tr>

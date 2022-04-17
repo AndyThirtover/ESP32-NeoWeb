@@ -7,6 +7,7 @@ import json
 
 neo_pin = 14
 LED_COUNT = 30
+ORDER = "RGBW"
 MAX = 255		# this is the maximum brightness
 BLUE = (0,0,255)
 RED = (255,0,0)
@@ -20,17 +21,25 @@ messages = []
 def load_config():
 	global LED_COUNT
 	global MAX
+	global ORDER
 	cf = open('config.json','r')
 	config_json = json.load(cf)
 	if config_json.get('LED_COUNT'):
 		LED_COUNT = int(config_json['LED_COUNT'])
 	if config_json.get('MAX'):
 		MAX = int(config_json['MAX'])
+	if config_json.get('ORDER'):
+		ORDER = config_json['ORDER']
 	cf.close()
 	return config_json
 
 config_json = load_config()  # Call this on startup
-np = NeoPixel(Pin(neo_pin),LED_COUNT,bpp=4) # load after LED Count is known
+np = NeoPixel(Pin(neo_pin),LED_COUNT,bpp=4,timing=1) # load after LED Count is known
+if ORDER == "GRBW":
+	np.ORDER=(0,1,2,3)
+	print("GRBW order selected")
+else:
+	print("RGBW order selected")
 
 def save_config(query):
 	global config_json
@@ -73,7 +82,7 @@ async def neo_off(np):
 
 
 def single_random(np):
-	np[1] = (randint(0,255),randint(0,255),randint(0,128))
+	np[1] = (randint(0,MAX),randint(0,MAX),randint(0,MAX))
 	np.write()
 
 
@@ -87,7 +96,7 @@ def single_random(np):
 
 async def random_pastel(np):
 	for i in range(LED_COUNT):
-		np[i] = (randint(0,255),randint(0,255),randint(0,255),randint(0,255))
+		np[i] = (randint(0,MAX),randint(0,MAX),randint(0,MAX),randint(0,MAX))
 		#print ("Values {}".format(np[i]))
 		np.write()
 

@@ -9,6 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 boot.py
+mr.py
 build/
 develop-eggs/
 dist/
