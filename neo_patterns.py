@@ -7,12 +7,8 @@ import json
 
 neo_pin = 14
 LED_COUNT = 30
-<<<<<<< HEAD
 ORDER = "RGBW"
 MAX = 255		# this is the maximum brightness
-=======
-MAX = 255       # this is the maximum brightness
->>>>>>> 46126e78a44cf4fdb04ed3161e8fdec4c7225aac
 BLUE = (0,0,255)
 RED = (255,0,0)
 GREEN = (0,255,0)
@@ -23,7 +19,6 @@ config_json = {}
 messages = []
 
 def load_config():
-<<<<<<< HEAD
 	global LED_COUNT
 	global MAX
 	global ORDER
@@ -45,22 +40,6 @@ if ORDER == "GRBW":
 	print("GRBW order selected")
 else:
 	print("RGBW order selected")
-=======
-    global LED_COUNT
-    global MAX
-    cf = open('config.json','r')
-    config_json = json.load(cf)
-    if config_json.get('LED_COUNT'):
-        LED_COUNT = int(config_json['LED_COUNT'])
-        print ("Current LED COUNT: {}".format(LED_COUNT))
-    if config_json.get('MAX'):
-        MAX = int(config_json['MAX'])
-    cf.close()
-    return config_json
-
-config_json = load_config()  # Call this on startup
-np = NeoPixel(Pin(neo_pin),LED_COUNT,bpp=3) # load after LED Count is known
->>>>>>> 46126e78a44cf4fdb04ed3161e8fdec4c7225aac
 
 def save_config(query):
     global config_json
@@ -103,13 +82,8 @@ async def neo_off(np):
 
 
 def single_random(np):
-<<<<<<< HEAD
 	np[1] = (randint(0,MAX),randint(0,MAX),randint(0,MAX))
 	np.write()
-=======
-    np[1] = (randint(0,255),randint(0,255),randint(0,128))
-    np.write()
->>>>>>> 46126e78a44cf4fdb04ed3161e8fdec4c7225aac
 
 
 
@@ -121,12 +95,6 @@ def single_random(np):
 #---------------------------------------------------------------------------------------
 
 async def random_pastel(np):
-<<<<<<< HEAD
-	for i in range(LED_COUNT):
-		np[i] = (randint(0,MAX),randint(0,MAX),randint(0,MAX),randint(0,MAX))
-		#print ("Values {}".format(np[i]))
-		np.write()
-=======
     rmin = const(2)
     rmax = const(128)
     gmax = const(64)
@@ -138,7 +106,6 @@ async def random_pastel(np):
         else:
             np[i] = (randint(rmin,rmax),randint(rmin,gmax),randint(0,bmax))
         np.write()
->>>>>>> 46126e78a44cf4fdb04ed3161e8fdec4c7225aac
 
 async def do_blend(np):
     current,target = extract_blend_colors()
@@ -261,7 +228,7 @@ def blend_colour(current,target,step,steps):
             blend_int(wc,wt,step,steps)
         )
 
-
+@micropython.native
 def blend_pixel_value(np,i,left,right):
     return int((left*(np.n-i))/np.n) + int(right*i/np.n)
     #print("BV: {0}, LEFT:{1}, RIGHT{2}, INDEX{3}".format(bv,left,right,i))
