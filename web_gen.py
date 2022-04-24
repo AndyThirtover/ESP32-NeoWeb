@@ -6,8 +6,6 @@ from microdot_asyncio import Microdot, Response
 from machine import Pin
 from neo_patterns import *
 
-LED = Pin(2, Pin.OUT)
-
 app = Microdot()
 
 @app.route('/')
@@ -18,11 +16,6 @@ async def hello(request):
 @app.route('/docs')
 async def show_docs(request):
     return Response.send_file('docs.html', status_code=200)
-
-@app.route('/toggle')
-async def toggle(request):
-    LED.value(not(LED.value()))
-    return Response.send_file('index.html', status_code=200)
 
 @app.route('/json_config')
 async def get_config(request):
@@ -38,8 +31,6 @@ async def show_config_req(request):
     save_config(request.query_string)
     return Response.send_file('config.html', status_code=200)
 
-
-
 @app.route('/queue/<job>')
 async def get_queue(request,job):
     messages.append(job)
@@ -52,7 +43,6 @@ async def get_cmd(request,job):
 
 @app.route('/scene/<job>')
 async def get_scene(request,job):
-    LED.value(not(LED.value()))
     scene_def = "{}:{}".format(job,request.query_string)
     messages.append(scene_def)
     return Response.redirect('/', status_code=302)

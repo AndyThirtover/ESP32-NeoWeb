@@ -6,6 +6,7 @@ import uasyncio as asyncio
 import json
 
 debounce = const(6)
+debouce_time = const(30)
 
 async def buttons():
 	off_pin = Pin(16, Pin.IN, Pin.PULL_UP)
@@ -29,4 +30,4 @@ async def buttons():
 			scene_count = 0
 			#print("blend from button")
 
-		await asyncio.sleep_ms(50)
+		await asyncio.sleep_ms(debouce_time)
